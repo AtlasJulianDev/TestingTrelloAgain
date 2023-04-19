@@ -16,14 +16,17 @@ window.TrelloPowerUp.initialize({
       },
     ];
   },
-  'card-badges': function(t, options) {
-    return t.get('card', 'shared', 'estimate')
-    .then(function(estimate) {
-      return [{
-        icon: estimate ? GREY_ROCKET_ICON : WHITE_ROCKET_ICON,
-        text: estimate || 'No Estimate!',
-        color: estimate ? null : 'red',
-      }];
-    });
-  },
+  'card-detail-badges': function(t, options) {
+    return [{
+      title: 'Estimate',
+      color: 'red',
+      text: 'Large',
+      callback: function(t) {
+        return t.popup({
+          title: "Estimation",
+          url: 'estimate.html',
+        });
+      }
+    }]
+  }
 });
